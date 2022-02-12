@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiPlus, FiArrowRight } from 'react-icons/fi';
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Marker, Popup } from 'react-leaflet';
 import { mapIcon } from '../../utils/mapIcon';
 import api from '../../services/api';
+import { Map } from '../../components';
 
 import logoImg from '../../images/logo.svg';
 
@@ -16,7 +17,7 @@ interface IInstituition {
   longitude: number;
 }
 
-export const InstituitionsMap = () => {
+export const InstituitionsMap: React.FC = () => {
   const [orphanages, setOrphanages] = useState<IInstituition[]>([]);
 
   useEffect(() => {
@@ -45,10 +46,6 @@ export const InstituitionsMap = () => {
         zoom={12}
         style={{ width: '100%', height: '100%' }}
       >
-        <TileLayer
-          url={`https://api.mapbox.com/styles/v1/mapbox/navigation-guidance-day-v4/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
-        />
-
         {orphanages.map((orphanage) => {
           return (
             <Marker
