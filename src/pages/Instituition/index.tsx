@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { FaWhatsapp } from 'react-icons/fa';
 import { FiClock, FiInfo } from 'react-icons/fi';
-import { Map, Marker, TileLayer } from 'react-leaflet';
+import { Marker } from 'react-leaflet';
 import { useParams } from 'react-router-dom';
 
 import '../../styles/pages/instituition.css';
 import { Sidebar } from '../../components/Sidebar';
 import { mapIcon } from '../../utils/mapIcon';
 import api from '../../services/api';
+import { Map } from '../../components';
 
 interface IInstituition {
   id: number;
@@ -34,7 +35,7 @@ export const Instituition = () => {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   useEffect(() => {
-    api.get(`Instituitions/${params.id}`).then((res) => {
+    api.get(`orphanages/${params.id}`).then((res) => {
       setInstituition(res.data);
     });
   }, [params.id]);
@@ -44,11 +45,11 @@ export const Instituition = () => {
   }
 
   return (
-    <div id="page-Instituition">
+    <div id="page-orphanage">
       <Sidebar />
 
       <main>
-        <div className="Instituition-details">
+        <div className="orphanage-details">
           <img
             src={instituition.images[activeImageIndex].url}
             alt={instituition.name}
@@ -71,7 +72,7 @@ export const Instituition = () => {
             })}
           </div>
 
-          <div className="Instituition-details-content">
+          <div className="orphanage-details-content">
             <h1>{instituition.name}</h1>
             <p>{instituition.about}</p>
 
@@ -86,9 +87,6 @@ export const Instituition = () => {
                 scrollWheelZoom={false}
                 doubleClickZoom={false}
               >
-                <TileLayer
-                  url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
-                />
                 <Marker
                   interactive={false}
                   icon={mapIcon}
