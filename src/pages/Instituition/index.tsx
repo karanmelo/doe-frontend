@@ -5,6 +5,7 @@ import { Marker } from 'react-leaflet';
 import { useParams } from 'react-router-dom';
 
 import '../../styles/pages/instituition.css';
+import { appConfig } from 'configs';
 import { Sidebar } from '../../components/Sidebar';
 import { mapIcon } from '../../utils/mapIcon';
 import api from '../../services/api';
@@ -35,7 +36,7 @@ export const Instituition = () => {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   useEffect(() => {
-    api.get(`orphanages/${params.id}`).then((res) => {
+    api.get(`institutions/${params.id}`).then((res) => {
       setInstituition(res.data);
     });
   }, [params.id]);
@@ -45,13 +46,13 @@ export const Instituition = () => {
   }
 
   return (
-    <div id="page-orphanage">
+    <div id="page-institution">
       <Sidebar />
 
       <main>
-        <div className="orphanage-details">
+        <div className="institution-details">
           <img
-            src={instituition.images[activeImageIndex].url}
+            src={`${appConfig.apiBaseUrl}${instituition.images[activeImageIndex].url}`}
             alt={instituition.name}
           />
 
@@ -66,13 +67,16 @@ export const Instituition = () => {
                     setActiveImageIndex(index);
                   }}
                 >
-                  <img src={image.url} alt={instituition.name} />
+                  <img
+                    src={`${appConfig.apiBaseUrl}${image.url}`}
+                    alt={instituition.name}
+                  />
                 </button>
               );
             })}
           </div>
 
-          <div className="orphanage-details-content">
+          <div className="institution-details-content">
             <h1>{instituition.name}</h1>
             <p>{instituition.about}</p>
 
