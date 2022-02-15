@@ -57,6 +57,7 @@ export const CreateInstituition: React.FC = () => {
 
     await api.post('orphanages', data);
 
+    // eslint-disable-next-line no-alert
     alert('Cadastro realizado com sucesso!');
 
     history.push('/app');
