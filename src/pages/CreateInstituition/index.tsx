@@ -55,7 +55,7 @@ export const CreateInstituition: React.FC = () => {
       data.append('images', image);
     });
 
-    await api.post('orphanages', data);
+    await api.post('institutions', data);
 
     // eslint-disable-next-line no-alert
     alert('Cadastro realizado com sucesso!');
@@ -80,11 +80,11 @@ export const CreateInstituition: React.FC = () => {
   };
 
   return (
-    <div id="page-create-orphanage">
+    <div id="page-create-institution">
       <Sidebar />
 
       <main>
-        <form className="create-orphanage-form" onSubmit={handleSubmit}>
+        <form className="create-institution-form" onSubmit={handleSubmit}>
           <fieldset>
             <legend>Dados</legend>
 

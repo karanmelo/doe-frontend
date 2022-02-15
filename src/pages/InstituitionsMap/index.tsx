@@ -19,12 +19,12 @@ interface IInstituition {
 }
 
 export const InstituitionsMap: React.FC = () => {
-  const [orphanages, setOrphanages] = useState<IInstituition[]>([]);
+  const [institutions, setOrphanages] = useState<IInstituition[]>([]);
 
   const { currentePosition } = useLocation();
 
   useEffect(() => {
-    api.get('orphanages').then((res) => {
+    api.get('institutions').then((res) => {
       setOrphanages(res.data);
     });
   }, []);
@@ -50,11 +50,11 @@ export const InstituitionsMap: React.FC = () => {
           zoom={12}
           style={{ width: '100%', height: '100%' }}
         >
-          {orphanages.map((orphanage) => {
+          {institutions.map((institution) => {
             return (
               <Marker
-                key={orphanage.id}
-                position={[orphanage.latitude, orphanage.longitude]}
+                key={institution.id}
+                position={[institution.latitude, institution.longitude]}
                 icon={mapIcon}
               >
                 <Popup
@@ -63,8 +63,8 @@ export const InstituitionsMap: React.FC = () => {
                   maxWidth={240}
                   className="map-popup"
                 >
-                  {orphanage.name}
-                  <Link to={`/orphanages/${orphanage.id}`}>
+                  {institution.name}
+                  <Link to={`/institutions/${institution.id}`}>
                     <FiArrowRight size={20} color="#FFF" />
                   </Link>
                 </Popup>
@@ -74,7 +74,7 @@ export const InstituitionsMap: React.FC = () => {
         </Map>
       )}
 
-      <Link to="/orphanages/create" className="create-orphanage">
+      <Link to="/institutions/create" className="create-institution">
         <FiPlus size={32} color="#FFF" />
       </Link>
     </div>

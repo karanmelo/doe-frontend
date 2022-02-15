@@ -15,8 +15,8 @@ const Routes = () => {
         <Route path="/" exact component={Landing} />
         <Route path="/app" component={InstituitionsMap} />
 
-        <Route path="/orphanages/create" component={CreateInstituition} />
-        <Route path="/orphanages/:id" component={Instituition} />
+        <Route path="/institutions/create" component={CreateInstituition} />
+        <Route path="/institutions/:id" component={Instituition} />
       </Switch>
     </BrowserRouter>
   );
