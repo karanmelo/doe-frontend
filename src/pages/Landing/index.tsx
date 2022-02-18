@@ -1,5 +1,6 @@
 import React from 'react';
 import { FiArrowRight } from 'react-icons/fi';
+import { useLocation } from 'hooks';
 import { Link } from 'react-router-dom';
 
 import '../../styles/pages/landing.css';
@@ -8,14 +9,15 @@ import logoImg from '../../images/logo.svg';
 import mascoteDoisImg from '../../images/mascote-2.svg';
 
 export const Landing = () => {
+  const { addrees } = useLocation();
   return (
     <div id="page-landing">
       <div className="content-wrapper">
         <div className="header">
           <img src={logoImg} alt="DOE" />
           <div className="location">
-            <strong>Salvador</strong>
-            <span>Bahia</span>
+            <strong>{addrees.city}</strong>
+            <span>{addrees.state}</span>
           </div>
         </div>
 
@@ -27,7 +29,7 @@ export const Landing = () => {
         <div className="footer">
           <p>Visite um centro de doação de sangue e salve vidas</p>
           <Link to="/app" className="enter-app">
-            <FiArrowRight size={26} color="rgba(0, 0, 0, 0.6)" />
+            <FiArrowRight size={26} color="rgba(243, 243, 241)" />
           </Link>
         </div>
       </div>

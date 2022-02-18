@@ -21,8 +21,7 @@ interface IInstituition {
 export const InstituitionsMap: React.FC = () => {
   const [institutions, setOrphanages] = useState<IInstituition[]>([]);
 
-  const { currentePosition } = useLocation();
-
+  const { addrees, currentePosition } = useLocation();
   useEffect(() => {
     api.get('institutions').then((res) => {
       setOrphanages(res.data);
@@ -39,8 +38,8 @@ export const InstituitionsMap: React.FC = () => {
           <p>Doe sangue, doe vida</p>
         </header>
         <footer>
-          <strong>Salvador</strong>
-          <span>Bahia</span>
+          <strong>{addrees?.city}</strong>
+          <span>{addrees?.state}</span>
         </footer>
       </aside>
 

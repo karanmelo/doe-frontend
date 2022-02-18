@@ -15,7 +15,7 @@ export const Sidebar = () => {
 
       <footer>
         <button type="button" onClick={goBack}>
-          <FiArrowLeft size={24} color="#FFF" />
+          <FiArrowLeft size={24} color="#438B35" />
         </button>
       </footer>
     </aside>
