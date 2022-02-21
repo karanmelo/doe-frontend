@@ -11,7 +11,7 @@
     "test:cov": "react-scripts test -u --ci --silent --coverage --runInBand --watchAll",
     "test:ci": "CI=true react-scripts test \".test.ts\" -u --silent --verbose --passWithNoTests",
     "eject": "react-scripts eject",
-    "lint": "eslint ./src --max-warnings 1",
+    "lint": "tsc --noEmit && eslint --fix --ext ts,tsx .",
     "fix": "yarn lint --fix"
   },
   "dependencies": {
