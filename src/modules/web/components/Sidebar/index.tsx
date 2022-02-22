@@ -1,10 +1,11 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+
 import { FiArrowLeft } from 'react-icons/fi';
+import { useHistory } from 'react-router-dom';
 
-import mascoteUm from '../images/mascote-1.svg';
+import mascoteUm from '../../images/mascote-1.svg';
 
-import '../styles/components/sidebar.css';
+import '../../styles/components/sidebar.css';
 
 export const Sidebar = () => {
   const { goBack } = useHistory();

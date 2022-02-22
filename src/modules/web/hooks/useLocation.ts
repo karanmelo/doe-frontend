@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
-import { useIsMounted } from 'hooks';
+
 import { LatLngExpression } from 'leaflet';
 import Geocode from 'react-geocode';
+
+import { useIsMounted } from '.';
 
 type AdressType = {
   city: string;
@@ -42,7 +44,7 @@ export const useLocation = () => {
       (position: LatLngExpression) =>
         isMounted.current && setCurrentPosition(position)
     );
-  }, []);
+  }, [isMounted]);
 
   useEffect(() => {
     Geocode.setApiKey('AIzaSyDzzi_VBcf2Oef6LTViLU767UPNHlnIze4');

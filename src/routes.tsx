@@ -1,23 +1,13 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import {
-  Landing,
-  InstituitionsMap,
-  Instituition,
-  CreateInstituition,
-} from './pages';
+import { BrowserRouter } from 'react-router-dom';
 
-const Routes = () => {
+import { WebRouter } from 'modules/web/routes';
+
+const Routes: React.FC = () => {
   return (
     <BrowserRouter>
-      <Switch>
-        <Route path="/" exact component={Landing} />
-        <Route path="/app" component={InstituitionsMap} />
-
-        <Route path="/institutions/create" component={CreateInstituition} />
-        <Route path="/institutions/:id" component={Instituition} />
-      </Switch>
+      <WebRouter />
     </BrowserRouter>
   );
 };

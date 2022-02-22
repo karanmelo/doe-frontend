@@ -1,14 +1,14 @@
 import React from 'react';
+
 import { FiArrowRight } from 'react-icons/fi';
-import { useLocation } from 'hooks';
 import { Link } from 'react-router-dom';
 
+import { useLocation } from '../../hooks';
 import '../../styles/pages/landing.css';
-
 import logoImg from '../../images/logo.svg';
 import mascoteDoisImg from '../../images/mascote-2.svg';
 
-export const Landing = () => {
+export const Landing: React.FC = () => {
   const { addrees } = useLocation();
   return (
     <div id="page-landing">

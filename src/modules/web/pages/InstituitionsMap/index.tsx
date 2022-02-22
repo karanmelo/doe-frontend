@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+
 import { FiPlus, FiArrowRight } from 'react-icons/fi';
 import { Marker, Popup } from 'react-leaflet';
-import { useLocation } from 'hooks';
-import { mapIcon } from '../../utils/mapIcon';
-import api from '../../services/api';
-import { Map } from '../../components';
+import { Link } from 'react-router-dom';
 
+import { Map } from '../../components';
+import { useLocation } from '../../hooks';
 import logoImg from '../../images/logo.svg';
+import api from '../../services/api';
+import { mapIcon } from '../../utils/mapIcon';
 
 import '../../styles/pages/instituitions-map.css';
 

@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { LeafletMouseEvent, LatLngExpression } from 'leaflet';
 import React from 'react';
 
+import { LeafletMouseEvent, LatLngExpression } from 'leaflet';
 import { Map as RLMap, TileLayer, MapProps as RLMapProps } from 'react-leaflet';
 
 export type MapProps = RLMapProps & {

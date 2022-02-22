@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
+
 import { FaWhatsapp } from 'react-icons/fa';
 import { FiClock, FiInfo } from 'react-icons/fi';
 import { Marker } from 'react-leaflet';
 import { useParams } from 'react-router-dom';
 
 import '../../styles/pages/instituition.css';
-import { appConfig } from 'configs';
-import { Sidebar } from '../../components/Sidebar';
-import { mapIcon } from '../../utils/mapIcon';
-import api from '../../services/api';
+
 import { Map } from '../../components';
+import { Sidebar } from '../../components/Sidebar';
+import { appConfig } from '../../configs';
+import api from '../../services/api';
+import { mapIcon } from '../../utils/mapIcon';
 
 interface IInstituition {
   id: number;

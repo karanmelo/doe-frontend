@@ -1,15 +1,16 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { FormEvent, useState, ChangeEvent } from 'react';
-import { useHistory } from 'react-router-dom';
-import { Marker } from 'react-leaflet';
-import { FiPlus } from 'react-icons/fi';
-import { LeafletMouseEvent } from 'leaflet';
-import { useLocation } from 'hooks';
-import { Map } from '../../components';
 
-import { mapIcon } from '../../utils/mapIcon';
+import { LeafletMouseEvent } from 'leaflet';
+import { FiPlus } from 'react-icons/fi';
+import { Marker } from 'react-leaflet';
+import { useHistory } from 'react-router-dom';
+
+import { Map } from '../../components';
 import { Sidebar } from '../../components/Sidebar';
+import { useLocation } from '../../hooks';
 import api from '../../services/api';
+import { mapIcon } from '../../utils/mapIcon';
 
 import '../../styles/pages/create-instituition.css';
 
