@@ -2,14 +2,17 @@
   "name": "doe-frontend",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "14"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test \".spec.ts\" -o --watchAll=false",
-    "test:watch": "react-scripts test \".test.ts\" -o --watch",
-    "test:e2e": "react-scripts test \".spec.ts\" -o --runInBand --testTimeout=10000",
+    "test": "react-scripts test \".spec.tsx\" -o --watchAll=false",
+    "test:watch": "react-scripts test \".spec.tsx\" -o --watch",
+    "test:e2e": "react-scripts test \".spec.tsx\" -o --runInBand --testTimeout=10000",
     "test:cov": "react-scripts test -u --ci --silent --coverage --runInBand --watchAll",
-    "test:ci": "CI=true react-scripts test \".test.ts\" -u --silent --verbose --passWithNoTests",
+    "test:ci": "CI=true react-scripts test \".spec.tsx\" -u --silent --verbose --passWithNoTests",
     "eject": "react-scripts eject",
     "lint": "tsc --noEmit && eslint --fix --ext ts,tsx .",
     "fix": "yarn lint --fix"
