@@ -7,7 +7,7 @@ import mascoteUm from '../../images/mascote-1.svg';
 
 import '../../styles/components/sidebar.css';
 
-export const Sidebar = () => {
+export const Sidebar: React.FC = () => {
   const { goBack } = useHistory();
 
   return (
