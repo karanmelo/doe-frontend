@@ -42,19 +42,17 @@ export const CreateInstituition: React.FC = () => {
 
     const { latitude, longitude } = latLng;
 
-    const data = new FormData();
+    const data = {
+      name,
+      about,
+      instructions,
+      latitude,
+      longitude,
+      opening_hours: openingHours,
+      open_on_weekends: openOnWeekends,
+    };
 
-    data.append('name', name);
-    data.append('about', about);
-    data.append('instructions', instructions);
-    data.append('latitude', String(latitude));
-    data.append('longitude', String(longitude));
-    data.append('opening_hours', openingHours);
-    data.append('open_on_weekends', String(openOnWeekends));
-
-    images.forEach((image) => {
-      data.append('images', image);
-    });
+    // TODO: send images
 
     await api.post('institutions', data);
 
