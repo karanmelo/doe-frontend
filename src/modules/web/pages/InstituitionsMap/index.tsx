@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import { LatLngExpression } from 'leaflet';
 import { FiPlus, FiArrowRight } from 'react-icons/fi';
 import { Marker, Popup } from 'react-leaflet';
 import { Link } from 'react-router-dom';
@@ -20,12 +21,12 @@ interface IInstituition {
 }
 
 export const InstituitionsMap: React.FC = () => {
-  const [institutions, setOrphanages] = useState<IInstituition[]>([]);
+  const [institutions, setInstitutions] = useState<IInstituition[]>([]);
 
   const { addrees, currentePosition } = useLocation();
   useEffect(() => {
     api.get('institutions').then((res) => {
-      setOrphanages(res.data);
+      setInstitutions(res.data);
     });
   }, []);
 
@@ -50,13 +51,14 @@ export const InstituitionsMap: React.FC = () => {
           zoom={12}
           style={{ width: '100%', height: '100%' }}
         >
-          {institutions.map((institution) => {
+          {institutions.map((institution: IInstituition) => {
+            const latLng: LatLngExpression = [
+              institution.latitude,
+              institution.longitude,
+            ];
+
             return (
-              <Marker
-                key={institution.id}
-                position={[institution.latitude, institution.longitude]}
-                icon={mapIcon}
-              >
+              <Marker key={institution.id} position={latLng} icon={mapIcon}>
                 <Popup
                   closeButton={false}
                   minWidth={240}
