@@ -54,30 +54,34 @@ export const Instituition = () => {
       <main>
         <h3>Centro de Doação</h3>
         <div className="institution-details">
-          <img
-            src={`${appConfig.apiBaseUrl}${instituition.images[activeImageIndex].url}`}
-            alt={instituition.name}
-          />
+          {instituition.images.length > 0 && (
+            <>
+              <img
+                src={`${appConfig.apiBaseUrl}${instituition.images[activeImageIndex].url}`}
+                alt={instituition.name}
+              />
 
-          <div className="images">
-            {instituition.images.map((image, index) => {
-              return (
-                <button
-                  key={image.id}
-                  className={activeImageIndex === index ? 'active' : ''}
-                  type="button"
-                  onClick={() => {
-                    setActiveImageIndex(index);
-                  }}
-                >
-                  <img
-                    src={`${appConfig.apiBaseUrl}${image.url}`}
-                    alt={instituition.name}
-                  />
-                </button>
-              );
-            })}
-          </div>
+              <div className="images">
+                {instituition.images.map((image, index) => {
+                  return (
+                    <button
+                      key={image.id}
+                      className={activeImageIndex === index ? 'active' : ''}
+                      type="button"
+                      onClick={() => {
+                        setActiveImageIndex(index);
+                      }}
+                    >
+                      <img
+                        src={`${appConfig.apiBaseUrl}${image.url}`}
+                        alt={instituition.name}
+                      />
+                    </button>
+                  );
+                })}
+              </div>
+            </>
+          )}
 
           <div className="institution-details-content">
             <h1>{instituition.name}</h1>
