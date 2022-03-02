@@ -12,7 +12,7 @@ import { mapIcon } from '../../utils/mapIcon';
 
 import '../../styles/pages/instituitions-map.css';
 
-interface IInstituition {
+interface Instituition {
   id: number;
   name: string;
   latitude: number;
@@ -20,7 +20,7 @@ interface IInstituition {
 }
 
 export const InstituitionsMap: React.FC = () => {
-  const [institutions, setOrphanages] = useState<IInstituition[]>([]);
+  const [institutions, setOrphanages] = useState<Instituition[]>([]);
 
   const { addrees, currentePosition } = useLocation();
   useEffect(() => {
@@ -39,8 +39,8 @@ export const InstituitionsMap: React.FC = () => {
           <p>Doe sangue, doe vida</p>
         </header>
         <footer>
-          <strong>{addrees?.city}</strong>
-          <span>{addrees?.state}</span>
+          <strong>{addrees.city}</strong>
+          <span>{addrees.state}</span>
         </footer>
       </aside>
 

@@ -6,8 +6,8 @@ import Geocode from 'react-geocode';
 import { useIsMounted } from '.';
 
 type AdressType = {
-  city: string;
-  state: string;
+  city: string | undefined;
+  state: string | undefined;
 };
 
 const getCurrentPosition = async (): Promise<{
@@ -33,8 +33,8 @@ const getCurrentPosition = async (): Promise<{
 export const useLocation = () => {
   const [currentePosition, setCurrentPosition] = useState<LatLngExpression>();
   const [addrees, setAddress] = useState<AdressType>({
-    city: 'Salvador',
-    state: 'Bahia',
+    city: '',
+    state: '',
   });
 
   const isMounted = useIsMounted();
@@ -48,8 +48,14 @@ export const useLocation = () => {
 
   useEffect(() => {
     Geocode.setApiKey('AIzaSyDzzi_VBcf2Oef6LTViLU767UPNHlnIze4');
-
-    if (!currentePosition) return;
+    console.log('currentePosition', currentePosition);
+    if (!currentePosition) {
+      setAddress({
+        city: 'undefined',
+        state: 'undefined',
+      });
+      return;
+    }
     const [lat, log] = Object.values(currentePosition);
 
     Geocode.fromLatLng(lat, log).then((response) => {
