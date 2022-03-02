@@ -48,7 +48,6 @@ export const useLocation = () => {
 
   useEffect(() => {
     Geocode.setApiKey('AIzaSyDzzi_VBcf2Oef6LTViLU767UPNHlnIze4');
-    console.log('currentePosition', currentePosition);
     if (!currentePosition) {
       setAddress({
         city: 'undefined',
