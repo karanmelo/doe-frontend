@@ -52,6 +52,7 @@ export const Instituition = () => {
       <Sidebar />
 
       <main>
+        <h3>Centro de Doação</h3>
         <div className="institution-details">
           {instituition.images.length > 0 && (
             <>

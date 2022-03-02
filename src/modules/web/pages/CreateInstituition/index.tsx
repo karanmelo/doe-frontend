@@ -85,6 +85,7 @@ export const CreateInstituition: React.FC = () => {
       <Sidebar />
 
       <main>
+        <h3>Centro de Doação</h3>
         <form className="create-institution-form" onSubmit={handleSubmit}>
           <fieldset>
             <legend>Dados</legend>

@@ -7,9 +7,26 @@
   flex: 1;
 }
 
+#page-institution main  h3 {
+  position: absolute;
+  height: 28px;
+  left: 41.67%;
+  right: 40.72%;
+  top: 30px;
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
+  text-align: center;
+  color: #343535;
+
+}
+
+
 .institution-details {
   width: 700px;
-  margin: 64px auto;
+  margin: 90px auto;
 
   background: #FFFFFF;
   border: 1px solid #D3E2E5;
@@ -26,10 +43,10 @@
 
 .institution-details .images {
   display: grid;
-  grid-template-columns: repeat(6 ,1fr);
+  grid-template-columns: repeat(4 ,1fr);
   column-gap: 16px;
 
-  margin: 16px 40px 0;
+  margin: 16px 0px 0;
 }
  
 .institution-details .images button {
@@ -50,7 +67,7 @@
 
 .institution-details .images button img {
   width: 100%;
-  height: 88px;
+  height: 100px;
   object-fit: cover;
   
 }
@@ -60,7 +77,7 @@
 }
 
 .institution-details .institution-details-content h1 {
-  color: #4D6F80;
+  color: #343535;
   font-size: 54px;
   line-height: 54px;
   margin-bottom: 8px;
@@ -68,13 +85,13 @@
 
 .institution-details .institution-details-content p {
   line-height: 28px;
-  color: #5C8599;
+  color: #444545;
   margin-top: 24px;
 }
 
 .institution-details .institution-details-content .map-container {
   margin-top: 64px;
-  background: #E6F7FB;
+  background: #F2F3F1;
   border: 1px solid #B3DAE2;
   border-radius: 20px;
 }
@@ -106,7 +123,7 @@
 .institution-details .institution-details-content h2 {
   font-size: 36px;
   line-height: 46px;
-  color: #4D6F80;
+  color: #343535;
 }
 
 .institution-details .institution-details-content .open-details {
@@ -153,7 +170,7 @@
   height: 64px;
   border: 0;
   cursor: pointer;
-  background: #3CDC8C;
+  background: #438B35;
   border-radius: 20px;
   color: #FFFFFF;
   font-weight: 800;
@@ -170,5 +187,5 @@
 }
 
 .institution-details .institution-details-content button.contact-button:hover {
-  background: #36CF82;
+  opacity: 90%;
 }
