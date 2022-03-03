@@ -13,7 +13,7 @@ import { mapIcon } from '../../utils/mapIcon';
 
 import '../../styles/pages/instituitions-map.css';
 
-interface Instituition {
+interface IInstituition {
   id: number;
   name: string;
   latitude: number;
