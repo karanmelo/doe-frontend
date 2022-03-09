@@ -34,7 +34,9 @@ export const InstituitionsMap: React.FC = () => {
     <div id="page-map">
       <aside>
         <header>
-          <img src={logoImg} alt="DOE" />
+          <Link to="/inicio">
+            <img src={logoImg} alt="DOE" />
+          </Link>
 
           <h2>Escolha um banco de doação de sangue no mapa</h2>
           <p>Doe sangue, doe vida</p>

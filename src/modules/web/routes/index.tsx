@@ -1,20 +1,68 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/require-default-props */
 import React from 'react';
 
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
+import { AuthProvider, useAuth } from '../hooks/useAuth';
 import {
   CreateInstituition,
   Instituition,
   InstituitionsMap,
   Landing,
+  ChallengeAuthentication,
+  NotFoundPage,
 } from '../pages';
 
-export const WebRouter: React.FC = () => (
-  <Switch>
-    <Route path="/" exact component={Landing} />
-    <Route path="/app" component={InstituitionsMap} />
+const PrivateRoute = ({
+  children,
+  ...rest
+}: {
+  children: JSX.Element | React.FC;
+  path: string;
+  exact?: boolean;
+}) => {
+  const { isSignedIn } = useAuth();
 
-    <Route path="/institutions/create" component={CreateInstituition} />
-    <Route path="/institutions/:id" component={Instituition} />
-  </Switch>
+  return (
+    <Route
+      {...rest}
+      render={({ location }) =>
+        isSignedIn ? (
+          children
+        ) : (
+          <Redirect
+            to={{
+              pathname: '/',
+              state: { from: location },
+            }}
+          />
+        )
+      }
+    />
+  );
+};
+export const WebRouter: React.FC = () => (
+  <AuthProvider>
+    <Switch>
+      <Route path="/" exact component={ChallengeAuthentication} />
+
+      <PrivateRoute path="/inicio" exact>
+        <Landing />
+      </PrivateRoute>
+
+      <PrivateRoute path="/app">
+        <InstituitionsMap />
+      </PrivateRoute>
+
+      <PrivateRoute path="/institutions/create">
+        <CreateInstituition />
+      </PrivateRoute>
+
+      <PrivateRoute path="/institutions/:id">
+        <Instituition />
+      </PrivateRoute>
+      <NotFoundPage />
+    </Switch>
+  </AuthProvider>
 );
