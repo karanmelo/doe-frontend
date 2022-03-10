@@ -14,7 +14,7 @@ const AuthContext = createContext<AuthContextProps>({} as AuthContextProps);
 export const AuthProvider: React.FC = ({ children }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [auth, setAuth] = useState<string | undefined>(() => {
-    const authToken = window.localStorage.getItem('auth');
+    const authToken = window.localStorage.getItem('@doe/auth');
 
     if (!authToken) return undefined;
 
@@ -29,7 +29,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     // Todo realizar resquest
     setAuth(token);
 
-    window.localStorage.setItem('auth', token);
+    window.localStorage.setItem('@doe/auth', token);
     setLoading(false);
     history.push('/');
   };

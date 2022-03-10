@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 
 import { useHistory } from 'react-router-dom';
 
@@ -22,7 +22,7 @@ export const useChallengeAuthentication = () => {
     }
   };
 
-  const changeValue = (e: any) => {
+  const changeValue = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
 
