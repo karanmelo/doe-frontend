@@ -3,6 +3,10 @@ import React, { useState, createContext, useContext, useMemo } from 'react';
 
 import { useHistory } from 'react-router-dom';
 
+import { error as toastError } from '../components';
+import { appConfig } from '../configs';
+import { signIn } from '../services/auth';
+
 type AuthContextProps = {
   loading: boolean;
   isSignedIn: boolean;
@@ -23,15 +27,26 @@ export const AuthProvider: React.FC = ({ children }) => {
   const isSignedIn = useMemo(() => !!auth, [auth]);
   const history = useHistory();
 
-  const authenticationProvider = async (token: string) => {
+  const authenticationProvider = async (accessToken: string) => {
     setLoading(true);
-
-    // Todo realizar resquest
-    setAuth(token);
-
-    window.localStorage.setItem('@doe/auth', token);
-    setLoading(false);
-    history.push('/');
+    try {
+      const response = await signIn({
+        clientId: appConfig.apiClientId || '',
+        clientToken: accessToken,
+      });
+      const token = response.access_token;
+      if (token) {
+        setAuth(token);
+        window.localStorage.setItem('@doe/auth', token);
+        history.push('/');
+      } else {
+        toastError('Ops! Houve um erro ao tentar fazer a autenticcação');
+      }
+    } catch (error) {
+      toastError('Ops! Houve um erro ao tentar fazer a autenticcação');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

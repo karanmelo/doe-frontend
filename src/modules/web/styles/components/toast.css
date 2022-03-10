@@ -1,0 +1,17 @@
+.toast {
+    padding: 2em !important;
+    border-radius: 4px !important;
+    background: white !important;
+    box-shadow: 2px 2px 5px black;
+    z-index: 13 !important;
+}
+  
+.success {
+    background: #438B35 !important;
+}
+  
+.error {
+    background: #C52330 !important;
+}
+  
+
