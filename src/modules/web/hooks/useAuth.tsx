@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 import { error as toastError } from '../components';
 import { appConfig } from '../configs';
-import { signIn } from '../services/auth';
+import { IAuthResponse, signIn } from '../services/auth';
 
 type AuthContextProps = {
   loading: boolean;
@@ -30,11 +30,11 @@ export const AuthProvider: React.FC = ({ children }) => {
   const authenticationProvider = async (accessToken: string) => {
     setLoading(true);
     try {
-      const response = await signIn({
+      const response: IAuthResponse = await signIn({
         clientId: appConfig.apiClientId || '',
         clientToken: accessToken,
       });
-      const token = response.access_token;
+      const token = response.accessToken;
       if (token) {
         setAuth(token);
         window.localStorage.setItem('@doe/auth', token);
