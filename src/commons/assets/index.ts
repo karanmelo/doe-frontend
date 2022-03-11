@@ -1,3 +1,4 @@
 import logo from './logo.svg';
+import mascot from './mascot.svg';
 
-export { logo };
+export { mascot, logo };

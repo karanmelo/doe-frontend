@@ -8,7 +8,7 @@ import App from './App';
 ReactDOM.render(
   <React.StrictMode>
     <App />
-    <ToastContainer />
+    <ToastContainer toastClassName="toast" />
   </React.StrictMode>,
   document.getElementById('root')
 );

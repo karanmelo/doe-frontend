@@ -4,3 +4,4 @@ export * from './Instituition';
 export * from './InstituitionsMap';
 export * from './ChallengeAuthentication';
 export * from './NotFound';
+export * from './PageSucess';

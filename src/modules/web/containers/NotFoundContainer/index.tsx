@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
-import '../../styles/pages/not-found.css';
+import '../../styles/containers/not-found.css';
 import logoImg from '../../images/logo.svg';
 
 export const NotFoundContainer: React.FC = () => {

@@ -11,6 +11,7 @@ import {
   InstituitionsMap,
   Landing,
   ChallengeAuthentication,
+  PageSucess,
   NotFoundPage,
 } from '../pages';
 
@@ -57,6 +58,10 @@ export const WebRouter: React.FC = () => (
 
       <PrivateRoute path="/institutions/create">
         <CreateInstituition />
+      </PrivateRoute>
+
+      <PrivateRoute path="/institutions/create-sucess">
+        <PageSucess />
       </PrivateRoute>
 
       <PrivateRoute path="/institutions/:id">
