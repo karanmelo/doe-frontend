@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 import api from 'modules/web/services/api';
 
+import { error as toastError } from '../../../components';
 import { useLocation } from '../../../hooks';
 
 export const useCreateInstitution = () => {
@@ -35,6 +36,11 @@ export const useCreateInstitution = () => {
 
     const { latitude, longitude } = latLng;
 
+    if (!(name && about && openingHours && openOnWeekends)) {
+      toastError('Preencha os campos corretamente!');
+      return;
+    }
+
     const data = new FormData();
 
     data.append('name', name);
@@ -49,12 +55,14 @@ export const useCreateInstitution = () => {
       data.append('images', image);
     });
 
-    await api.post('institutions', data);
-
-    // eslint-disable-next-line no-alert
-    alert('Cadastro realizado com sucesso!');
-
-    history.push('/app');
+    await api
+      .post('institutions', data)
+      .then((res) => {
+        if (res) {
+          history.push('/institutions/create-sucess');
+        }
+      })
+      .catch(() => toastError('Erro em cadastrar centro de doação!'));
   };
 
   const handleSelectImages = (event: ChangeEvent<HTMLInputElement>) => {
