@@ -7,7 +7,10 @@ export const signIn: SignIn = async (
 ): Promise<IAuthResponse> => {
   freeze();
 
-  if (!request.clientToken) return { accessToken: undefined };
+  if (!request.clientToken) {
+    throw new Error('Token inválido');
+  }
+
   return {
     accessToken:
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',

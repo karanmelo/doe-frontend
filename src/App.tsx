@@ -1,12 +1,13 @@
 import React from 'react';
 
-import './commons/styles/global.css';
+// leaflet dependencies importation
 import 'leaflet/dist/leaflet.css';
+import './commons/styles/global.css';
 
-import Routes from './routes';
+import { Router } from './router';
 
 const App: React.FC = () => {
-  return <Routes />;
+  return <Router />;
 };
 
 export default App;

@@ -5,7 +5,7 @@ import * as mock from './mock';
 const selectedModule = appConfig.useMock === 'true' ? mock : integration;
 
 export type IAuthResponse = {
-  accessToken: string | undefined;
+  accessToken: string;
 };
 
 export type IAuthRequest = {

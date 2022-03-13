@@ -12,7 +12,7 @@ export const NotFoundContainer: React.FC = () => {
       <div className="texts">
         <h1>404</h1>
         <span>PÁGINA NÃO ENCONTRADA</span>
-        <Link to="/inicio" className="link">
+        <Link to="/" className="link">
           Voltar para página principal
         </Link>
       </div>

@@ -1,69 +1,40 @@
-/* eslint-disable react/jsx-no-constructed-context-values */
-import React, { useState, createContext, useContext, useMemo } from 'react';
+import {
+  IAuthRequest,
+  IAuthResponse,
+  signIn as signInService,
+} from '../services';
+import { AuthData } from '../types';
 
-import { useHistory } from 'react-router-dom';
-
-import { error as toastError } from '../components';
-import { appConfig } from '../configs';
-import { IAuthResponse, signIn } from '../services/auth';
-
-type AuthContextProps = {
-  loading: boolean;
-  isSignedIn: boolean;
-  authenticationProvider: (token: string) => void;
-};
-
-const AuthContext = createContext<AuthContextProps>({} as AuthContextProps);
-
-export const AuthProvider: React.FC = ({ children }) => {
-  const [loading, setLoading] = useState<boolean>(false);
-  const [auth, setAuth] = useState<string | undefined>(() => {
-    const authToken = window.localStorage.getItem('@doe/auth');
-
-    if (!authToken) return undefined;
-
-    return authToken;
-  });
-  const isSignedIn = useMemo(() => !!auth, [auth]);
-  const history = useHistory();
-
-  const authenticationProvider = async (accessToken: string) => {
-    setLoading(true);
-    try {
-      const response: IAuthResponse = await signIn({
-        clientId: appConfig.apiClientId || '',
-        clientToken: accessToken,
-      });
-      const token = response.accessToken;
-      if (token) {
-        setAuth(token);
-        window.localStorage.setItem('@doe/auth', token);
-        history.push('/');
-      } else {
-        toastError('Ops! Houve um erro ao tentar fazer a autenticcação');
-      }
-    } catch (error) {
-      toastError('Ops! Houve um erro ao tentar fazer a autenticcação');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return (
-    <AuthContext.Provider
-      value={{ loading, isSignedIn, authenticationProvider }}
-    >
-      {children}
-    </AuthContext.Provider>
-  );
-};
+const ACCESS_TOKEN_KEY = '@appdoe_access_token';
 
 export const useAuth = () => {
-  const context = useContext(AuthContext);
+  const isAuthenticated = () => localStorage.getItem(ACCESS_TOKEN_KEY) !== null;
+  const getToken = () => localStorage.getItem(ACCESS_TOKEN_KEY);
 
-  if (!context) {
-    throw new Error('You just can access this context inside a provider');
-  }
+  const signInProvider = async (params: IAuthRequest): Promise<AuthData> => {
+    const response: IAuthResponse = await signInService(params);
 
-  return context;
+    const { accessToken } = response;
+
+    localStorage.setItem('authData', JSON.stringify(response));
+    localStorage.setItem(ACCESS_TOKEN_KEY, accessToken);
+
+    const authData: AuthData = {
+      accessToken,
+    };
+
+    return authData;
+  };
+
+  const signOutProvider = async (): Promise<void> => {
+    localStorage.removeItem('authData');
+    localStorage.removeItem(ACCESS_TOKEN_KEY);
+  };
+
+  return {
+    isAuthenticated,
+    getToken,
+    signInProvider,
+    signOutProvider,
+  };
 };
