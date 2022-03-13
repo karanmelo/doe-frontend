@@ -1,5 +1,5 @@
 import { SignIn, IAuthRequest, IAuthResponse } from '.';
-import api from '../api';
+import { api } from '..';
 
 export const signIn: SignIn = async (
   request: IAuthRequest

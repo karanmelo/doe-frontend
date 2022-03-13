@@ -3,10 +3,9 @@ import { ChangeEvent, FormEvent, useState } from 'react';
 import { LeafletMouseEvent } from 'leaflet';
 import { useHistory } from 'react-router-dom';
 
-import api from 'modules/web/services/api';
-
 import { error as toastError } from '../../../components';
 import { useLocation } from '../../../hooks';
+import { api } from '../../../services';
 
 export const useCreateInstitution = () => {
   const [latLng, setLatLng] = useState({ latitude: 0, longitude: 0 });

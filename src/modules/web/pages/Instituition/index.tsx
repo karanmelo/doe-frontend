@@ -10,7 +10,7 @@ import '../../styles/pages/instituition.css';
 import { Map } from '../../components';
 import { Sidebar } from '../../components/Sidebar';
 import { appConfig } from '../../configs';
-import api from '../../services/api';
+import { api } from '../../services';
 import { mapIcon } from '../../utils/mapIcon';
 
 interface IInstituition {
