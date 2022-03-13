@@ -11,7 +11,7 @@ export const ChallengeAuthenticationContainer: React.FC = () => {
     <div id="page-challenge">
       <div className="content-wrapper">
         <div className="header">
-          <h1>Seja bem-vindo(a)</h1>
+          <h1>Seja bem-vinda(o)</h1>
           <p>“Esta é um previsão de subtítulo”</p>
         </div>
 
