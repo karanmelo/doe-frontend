@@ -23,8 +23,11 @@ interface IInstituition {
   opening_hours: string;
   open_on_weekends: string;
   images: Array<{
-    id: number;
-    url: string;
+    id: string;
+    originalName: string;
+    filenName: string;
+    mimeType: string;
+    path: string;
   }>;
 }
 
@@ -57,7 +60,7 @@ export const Instituition = () => {
           {instituition.images.length > 0 && (
             <>
               <img
-                src={`${appConfig.apiBaseUrl}${instituition.images[activeImageIndex].url}`}
+                src={`${appConfig.apiBaseUrl}${instituition.images[activeImageIndex].path}`}
                 alt={instituition.name}
               />
 
@@ -73,7 +76,7 @@ export const Instituition = () => {
                       }}
                     >
                       <img
-                        src={`${appConfig.apiBaseUrl}${image.url}`}
+                        src={`${appConfig.apiBaseUrl}${image.path}`}
                         alt={instituition.name}
                       />
                     </button>

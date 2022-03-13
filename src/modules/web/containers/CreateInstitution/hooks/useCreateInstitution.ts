@@ -48,8 +48,8 @@ export const useCreateInstitution = () => {
     data.append('instructions', instructions);
     data.append('latitude', String(latitude));
     data.append('longitude', String(longitude));
-    data.append('opening_hours', openingHours);
-    data.append('open_on_weekends', String(openOnWeekends));
+    data.append('openingHours', openingHours);
+    data.append('openOnWeekends', String(openOnWeekends));
 
     images.forEach((image) => {
       data.append('images', image);
@@ -62,6 +62,7 @@ export const useCreateInstitution = () => {
           history.push('/institutions/create-sucess');
         }
       })
+      // TODO: correção ortográfica após Semana Tech
       .catch(() => toastError('Erro em cadastrar centro de doação!'));
   };
 
