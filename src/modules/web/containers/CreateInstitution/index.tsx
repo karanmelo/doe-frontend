@@ -16,6 +16,8 @@ export const CreateInstituitionContainer: React.FC = () => {
     setName,
     about,
     setAbout,
+    phone,
+    setPhone,
     previewImages,
     currentePosition,
     latLng,
@@ -70,14 +72,38 @@ export const CreateInstituitionContainer: React.FC = () => {
 
             <div className="input-block">
               <label htmlFor="about">
-                Sobre <span>Máximo de 300 caracteres</span>
+                Sobre
+                <span
+                // TODO: adicionar acentuação na descrição após o desafio da Semana Tech
+                >
+                  Maximo de 300 caracteres
+                </span>
               </label>
               <textarea
                 id="about"
-                maxLength={300}
+                // TODO: habilitar limite de caracteres após o desafio da Semana Tech
+                // maxLength={300}
                 value={about}
                 onChange={(event) => {
                   setAbout(event.target.value);
+                }}
+              />
+            </div>
+
+            <div className="input-block">
+              <label
+                // TODO: adicionar acentuação na descrição após o desafio da Semana Tech
+                htmlFor="phone"
+              >
+                Numero de Whatsapp
+              </label>
+              <input
+                id="phone"
+                type="tel"
+                pattern="\(\d{2}\) \d{4,5}-\d{4}"
+                value={phone}
+                onChange={(event) => {
+                  setPhone(event.target.value);
                 }}
               />
             </div>

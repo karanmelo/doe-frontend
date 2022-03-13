@@ -11,6 +11,7 @@ export const useCreateInstitution = () => {
   const [latLng, setLatLng] = useState({ latitude: 0, longitude: 0 });
   const [name, setName] = useState('');
   const [about, setAbout] = useState('');
+  const [phone, setPhone] = useState('');
   const [instructions, setInstructions] = useState('');
   const [openingHours, setOpeningHours] = useState('');
   const [openOnWeekends, setOpenOnWeekends] = useState(true);
@@ -85,6 +86,8 @@ export const useCreateInstitution = () => {
     setName,
     about,
     setAbout,
+    phone,
+    setPhone,
     previewImages,
     currentePosition,
     latLng,
