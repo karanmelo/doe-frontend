@@ -15,11 +15,13 @@ export const HttpRequestErrorInterceptor = () => {
   interceptorId.current = api.interceptors.response.use(undefined, (error) => {
     signOutProvider();
     switch (error.response.status) {
+      case 401:
+        history.push('/login');
+        break;
       case 404:
         history.push('/404');
         break;
       default:
-        history.push('/login');
     }
   });
 
