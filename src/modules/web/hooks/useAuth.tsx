@@ -26,7 +26,7 @@ export const useAuth = () => {
     return authData;
   };
 
-  const signOutProvider = async (): Promise<void> => {
+  const signOutProvider = (): void => {
     localStorage.removeItem('authData');
     localStorage.removeItem(ACCESS_TOKEN_KEY);
   };
