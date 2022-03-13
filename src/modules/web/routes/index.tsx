@@ -2,19 +2,23 @@ import React from 'react';
 
 import { Switch, Route } from 'react-router-dom';
 
-import {
-  CreateInstituition,
-  Instituition,
-  InstituitionsMap,
-  Landing,
-} from '../pages';
+import { ChallengeAuthentication } from '../pages';
+import { HttpRequestErrorInterceptor } from '../services';
+import { AuthContextProvider } from '../stores';
+import { ApplicationRouter } from './ApplicationRouter';
+import { PrivateRouter } from './utils';
 
 export const WebRouter: React.FC = () => (
-  <Switch>
-    <Route path="/" exact component={Landing} />
-    <Route path="/app" component={InstituitionsMap} />
+  <AuthContextProvider>
+    <Switch>
+      <Route path="/login" exact component={ChallengeAuthentication} />
+      <PrivateRouter>
+        <Route>
+          <ApplicationRouter />
+        </Route>
+      </PrivateRouter>
+    </Switch>
 
-    <Route path="/institutions/create" component={CreateInstituition} />
-    <Route path="/institutions/:id" component={Instituition} />
-  </Switch>
+    <HttpRequestErrorInterceptor />
+  </AuthContextProvider>
 );

@@ -32,7 +32,7 @@ const getCurrentPosition = async (): Promise<{
 
 export const useLocation = () => {
   const [currentePosition, setCurrentPosition] = useState<LatLngExpression>();
-  const [addrees, setAddress] = useState<AdressType>({
+  const [address, setAddress] = useState<AdressType>({
     city: '',
     state: '',
   });
@@ -58,16 +58,16 @@ export const useLocation = () => {
     const [lat, log] = Object.values(currentePosition);
 
     Geocode.fromLatLng(lat, log).then((response) => {
-      const address = response.results[0];
+      const responseAddress = response.results[0];
       setAddress({
-        city: address.address_components[3].long_name,
-        state: address.address_components[4].long_name,
+        city: responseAddress.address_components[3].long_name,
+        state: responseAddress.address_components[4].long_name,
       });
     });
   }, [currentePosition]);
 
   return {
-    addrees,
+    addrees: address,
     currentePosition,
     getCurrentPosition,
   };

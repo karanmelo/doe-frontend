@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { Map } from '../../components';
 import { useLocation } from '../../hooks';
 import logoImg from '../../images/logo.svg';
-import api from '../../services/api';
+import { api } from '../../services';
 import { mapIcon } from '../../utils/mapIcon';
 
 import '../../styles/pages/instituitions-map.css';
@@ -34,7 +34,9 @@ export const InstituitionsMap: React.FC = () => {
     <div id="page-map">
       <aside>
         <header>
-          <img src={logoImg} alt="DOE" />
+          <Link to="/">
+            <img src={logoImg} alt="DOE" />
+          </Link>
 
           <h2>Escolha um banco de doação de sangue no mapa</h2>
           <p>Doe sangue, doe vida</p>

@@ -1,0 +1,90 @@
+#page-challenge{
+    width: 100vw;
+    height: 100vh;
+    padding: 80px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--base-blue);
+}
+
+#page-challenge .content-wrapper {
+    width: 100%;
+    max-height: 680px;
+    max-width: 1100px;
+
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+
+}
+
+#page-challenge .content-wrapper .header {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#page-challenge .content-wrapper .header h1, #page-challenge .content-wrapper .header p{
+    font-family: Orelega One;
+    font-style: normal;
+    font-weight: normal;
+    color: #F2F3F1;
+}
+
+#page-challenge .content-wrapper .header h1{
+    font-size: 100px;
+    line-height: 100px;
+    margin-bottom: 36px;
+}
+
+#page-challenge .content-wrapper .header p{
+    font-size: 32px;
+    line-height: 38px;
+}
+
+#page-challenge .content-wrapper .content {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 140px;
+}
+
+#page-challenge .content-wrapper .content input{
+    cursor: pointer;
+    background: #F2F3F1;
+    border: 1px solid #D9DDDE;
+    box-sizing: border-box;
+    border-radius: 18px;
+    height: 45px;
+    padding: 0 6px;
+    min-width: 500px;
+    outline: none;
+    color: #4d4e4e;
+}
+
+#page-challenge .content-wrapper .content input:focus-visible{
+    outline: 0;
+}
+
+
+#page-challenge .content-wrapper .content p{
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 34px;
+}
+
+
+#page-challenge .content-wrapper .footer {
+    margin-top: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
