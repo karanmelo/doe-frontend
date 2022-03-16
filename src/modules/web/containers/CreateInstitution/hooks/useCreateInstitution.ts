@@ -44,6 +44,7 @@ export const useCreateInstitution = () => {
     const data = new FormData();
 
     data.append('name', name);
+    data.append('phone', phone);
     data.append('about', about);
     data.append('instructions', instructions);
     data.append('latitude', String(latitude));

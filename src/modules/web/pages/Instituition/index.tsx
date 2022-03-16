@@ -9,7 +9,6 @@ import '../../styles/pages/instituition.css';
 
 import { Map } from '../../components';
 import { Sidebar } from '../../components/Sidebar';
-import { appConfig } from '../../configs';
 import { api } from '../../services';
 import { mapIcon } from '../../utils/mapIcon';
 
@@ -60,7 +59,7 @@ export const Instituition = () => {
           {instituition.images.length > 0 && (
             <>
               <img
-                src={`${appConfig.apiBaseUrl}${instituition.images[activeImageIndex].path}`}
+                src={instituition.images[activeImageIndex].path}
                 alt={instituition.name}
               />
 
@@ -75,10 +74,7 @@ export const Instituition = () => {
                         setActiveImageIndex(index);
                       }}
                     >
-                      <img
-                        src={`${appConfig.apiBaseUrl}${image.path}`}
-                        alt={instituition.name}
-                      />
+                      <img src={image.path} alt={instituition.name} />
                     </button>
                   );
                 })}
