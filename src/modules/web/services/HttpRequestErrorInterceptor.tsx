@@ -13,16 +13,18 @@ export const HttpRequestErrorInterceptor = () => {
   const { signOutProvider } = useAuth();
 
   interceptorId.current = api.interceptors.response.use(undefined, (error) => {
-    signOutProvider();
-    switch (error.response.status) {
+    switch (error.response?.status) {
       case 401:
+        signOutProvider();
         history.push('/login');
         break;
       case 404:
+        signOutProvider();
         history.push('/404');
         break;
       default:
     }
+    throw new Error(error);
   });
 
   useEffect(() => {
