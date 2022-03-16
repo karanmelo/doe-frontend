@@ -49,7 +49,7 @@ export const CreateInstituitionContainer: React.FC = () => {
                 style={{ width: '100%', height: 280 }}
                 onClick={handleMapClick}
               >
-                {latLng.latitude !== 0 && (
+                {latLng && latLng.latitude !== 0 && (
                   <Marker
                     interactive={false}
                     icon={mapIcon}

@@ -8,7 +8,10 @@ import { useLocation } from '../../../hooks';
 import { api } from '../../../services';
 
 export const useCreateInstitution = () => {
-  const [latLng, setLatLng] = useState({ latitude: 0, longitude: 0 });
+  const [latLng, setLatLng] = useState<{
+    latitude: number;
+    longitude: number;
+  } | null>(null);
   const [name, setName] = useState('');
   const [about, setAbout] = useState('');
   const [phone, setPhone] = useState('');
@@ -34,8 +37,6 @@ export const useCreateInstitution = () => {
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
-    const { latitude, longitude } = latLng;
-
     if (!(name && about && openingHours && openOnWeekends)) {
       toastError('Preencha os campos corretamente!');
       return;
@@ -47,8 +48,8 @@ export const useCreateInstitution = () => {
     data.append('phone', phone);
     data.append('about', about);
     data.append('instructions', instructions);
-    data.append('latitude', String(latitude));
-    data.append('longitude', String(longitude));
+    data.append('latitude', String(latLng?.latitude));
+    data.append('longitude', String(latLng?.longitude));
     data.append('openingHours', openingHours);
     data.append('openOnWeekends', String(openOnWeekends));
 
