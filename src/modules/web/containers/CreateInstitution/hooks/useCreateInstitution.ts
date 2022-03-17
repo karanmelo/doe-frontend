@@ -37,8 +37,30 @@ export const useCreateInstitution = () => {
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
-    if (!(name && about && openingHours && openOnWeekends)) {
-      toastError('Preencha os campos corretamente!');
+    const getBlankField = () => {
+      if (!name) {
+        return 'Nome';
+      }
+      if (!about) {
+        return 'Sobre';
+      }
+      if (!openingHours) {
+        return 'Horário de funcionamento';
+      }
+      if (!openOnWeekends) {
+        return 'Atende fim de semana';
+      }
+      if (!latLng) {
+        return 'Localização no mapa';
+      }
+      if (!instructions) {
+        return 'Instruções';
+      }
+      return null;
+    };
+
+    if (getBlankField()) {
+      toastError(`É necessário preencher o campo ${getBlankField()}.`);
       return;
     }
 
