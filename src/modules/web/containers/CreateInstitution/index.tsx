@@ -99,7 +99,6 @@ export const CreateInstituitionContainer: React.FC = () => {
               </label>
               <input
                 id="phone"
-                type="tel"
                 pattern="\(\d{2}\) \d{4,5}-\d{4}"
                 value={phone}
                 onChange={(event) => {
