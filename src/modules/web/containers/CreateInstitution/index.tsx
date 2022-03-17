@@ -49,7 +49,7 @@ export const CreateInstituitionContainer: React.FC = () => {
                 style={{ width: '100%', height: 280 }}
                 onClick={handleMapClick}
               >
-                {latLng.latitude !== 0 && (
+                {latLng && latLng.latitude !== 0 && (
                   <Marker
                     interactive={false}
                     icon={mapIcon}
@@ -99,7 +99,6 @@ export const CreateInstituitionContainer: React.FC = () => {
               </label>
               <input
                 id="phone"
-                type="tel"
                 pattern="\(\d{2}\) \d{4,5}-\d{4}"
                 value={phone}
                 onChange={(event) => {
